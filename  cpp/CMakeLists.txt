@@ -80,4 +80,4 @@ set(ARROW_HEX_VERSION ${PACKAGE_VERSION_HEX})
 
 find_package(Arrow CONFIG REQUIRED)
 
-add_subdirectory(examples)
+add_subdirectory("examples")
