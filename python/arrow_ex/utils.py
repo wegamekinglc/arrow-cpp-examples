@@ -4,6 +4,12 @@ import pyarrow as pa
 import polars as pl
 import time
 import sqlite3
+import psutil
+import os
+
+
+def get_mem():
+    return psutil.Process(os.getpid()).memory_info().rss >> 20
 
 
 def generate_data(n: int, df_type="pandas"):
