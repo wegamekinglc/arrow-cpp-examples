@@ -30,3 +30,14 @@ if __name__ == "__main__":
         reader = client.do_get(flight.endpoints[0].ticket)
         read_table = reader.read_all()
     print(dt.datetime.now() - now)
+
+    _ = client.do_action(pa.flight.Action("drop_dataset", "uploaded.parquet".encode('utf-8')))
+
+    # List existing datasets.
+    for flight in client.list_flights():
+        descriptor = flight.descriptor
+        print("Path:", descriptor.path[0].decode('utf-8'), "Rows:", flight.total_records, "Size:", flight.total_bytes)
+        print("=== Schema ===")
+        print(flight.schema)
+        print("==============")
+        print("")
